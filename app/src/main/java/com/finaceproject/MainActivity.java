@@ -1,8 +1,10 @@
-package com.example.finaceproject;
+package com.finaceproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.finaceproject.R;
 
 public class MainActivity extends AppCompatActivity {
 

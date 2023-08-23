@@ -1,4 +1,4 @@
-package com.example.finaceproject;
+package com.finaceproject;
 
 import org.junit.Test;
 
