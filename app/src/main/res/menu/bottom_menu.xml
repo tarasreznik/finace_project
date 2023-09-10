@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/black"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/diagram"
+        android:icon="@drawable/chart_bar"
+        android:title="@string/diagrams" />
+
+    <item
+        android:id="@+id/action_bottom"
+        android:enabled="false"
+        android:title="" />
+
+    <item
+        android:id="@+id/reports"
+        android:icon="@drawable/note_text"
+        android:title="@string/reports" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/account"
+        android:title="@string/profile" />
+
+</menu>

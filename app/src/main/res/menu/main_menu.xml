@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    tools:background="@color/black">
+
+<group android:checkableBehavior="single">
+    <item android:id="@+id/bills"
+        android:icon="@drawable/fluent_payment_16_regular"
+        android:title="@string/bills"/>
+    <item android:id="@+id/currency"
+        android:icon="@drawable/ic_currency"
+        android:title="@string/currency"/>
+    <item android:id="@+id/payments"
+        android:icon="@drawable/ic_payments"
+        android:title="@string/payments"/>
+    <item android:id="@+id/reminder"
+        android:icon="@drawable/ic_reminder"
+        android:title="@string/reminder"/>
+    <item android:id="@+id/share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/share"/>
+    <item android:id="@+id/rate"
+        android:icon="@drawable/ic_star"
+        android:title="@string/rate"/>
+    <item android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"/>
+    <item android:id="@+id/support"
+        android:icon="@drawable/ic_support"
+        android:title="@string/support"/>
+</group>
+    <item android:id="@+id/profile_menu"
+        android:icon="@drawable/fi_rr_user"
+        android:title="">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/logout"
+                    android:icon="@drawable/fi_rr_sign_out"
+                    android:title="@string/logout"/>
+            </group>
+        </menu>
+    </item>
+</menu>
