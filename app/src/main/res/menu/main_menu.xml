@@ -6,6 +6,7 @@
 
 <group android:checkableBehavior="single">
     <item android:id="@+id/bills"
+        android:orderInCategory="0"
         android:icon="@drawable/fluent_payment_16_regular"
         android:title="@string/bills"/>
     <item android:id="@+id/currency"
@@ -16,7 +17,7 @@
         android:title="@string/payments"/>
     <item android:id="@+id/reminder"
         android:icon="@drawable/ic_reminder"
-        android:title="@string/reminder"/>
+        android:title="@string/remind"/>
     <item android:id="@+id/share"
         android:icon="@drawable/ic_share"
         android:title="@string/share"/>

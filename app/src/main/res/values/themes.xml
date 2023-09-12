@@ -1,15 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.FinanceProject" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/toxic</item>
-        <item name="android:statusBarColor">@color/toxic</item>
-    </style>
+    <style name="Base.Theme.FinanceProject" parent="Theme.MaterialComponents.NoActionBar" />
 
-    <style name="ThemeOverlay.AppCompat.navTheme" parent="Base.Theme.FinanceProject">
+    <style name="AppThemeDefault" parent="Base.Theme.FinanceProject">
         <item name="colorPrimary">@color/toxic</item>
-        <item name="colorOnContainer">@color/white</item>
+        <item name="colorControlNormal">@color/secondary</item>
+        <item name="android:statusBarColor">@color/toxic</item>
+        <item name="colorOnContainer">@color/secondary</item>
     </style>
 
     <style name="DialogAnimation">

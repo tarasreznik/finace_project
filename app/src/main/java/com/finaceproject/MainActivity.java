@@ -22,20 +22,35 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
+import com.finaceproject.fragment.BillsFragment;
+import com.finaceproject.fragment.CurrencyFragment;
+import com.finaceproject.fragment.DiagramFragment;
+import com.finaceproject.fragment.HomeFragment;
+import com.finaceproject.fragment.PaymentsFragment;
+import com.finaceproject.fragment.ProfileFragment;
+import com.finaceproject.fragment.RateFragment;
+import com.finaceproject.fragment.ReminderFragment;
+import com.finaceproject.fragment.ReportsFragment;
+import com.finaceproject.fragment.SettingsFragment;
+import com.finaceproject.fragment.ShareFragment;
+import com.finaceproject.fragment.SupportFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    BottomNavigationView bottomNavigationView;
-    ActionBarDrawerToggle drawerToggle;
-    FloatingActionButton fab;
-    Toolbar toolbar;
-    FragmentManager fragmentManager;
+
+public class MainActivity extends AppCompatActivity {
+    private static final int LAYOUT = R.layout.activity_main;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ViewPager viewPager;
+    private ActionBarDrawerToggle drawerToggle;
+    private Toolbar toolbar;
+    private FragmentManager fragmentManager;
 
 
     @Override
@@ -46,26 +61,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+    private void showPage() {
+        viewPager.setCurrentItem(0);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppThemeDefault);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(LAYOUT);
 
-        fab = findViewById(R.id.fab);
-        toolbar = findViewById(R.id.toolbar);
+        initToolBar();
+        initNavigationView();
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+
         setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
+
+
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -98,7 +118,81 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 showBottomDialog();
-//                Toast.makeText(MainActivity.this, "is clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "is clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void initToolBar() {
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.app_name);
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.bills) {
+                replaceFragment(new BillsFragment());
+            } else if (item.getItemId() == R.id.currency) {
+                replaceFragment(new CurrencyFragment());
+            } else if (item.getItemId() == R.id.payments) {
+                replaceFragment(new PaymentsFragment());
+            } else if (item.getItemId() == R.id.reminder) {
+                replaceFragment(new ReminderFragment());
+            } else if (item.getItemId() == R.id.share) {
+                replaceFragment(new ShareFragment());
+            } else if (item.getItemId() == R.id.rate) {
+                replaceFragment(new RateFragment());
+            } else if (item.getItemId() == R.id.settings) {
+                replaceFragment(new SettingsFragment());
+            } else if (item.getItemId() == R.id.support) {
+                replaceFragment(new SupportFragment());
+            } else if (item.getItemId() == R.id.bills) {
+                Toast.makeText(this, "You clicked " + R.string.bills, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.currency) {
+                Toast.makeText(this, "You clicked " + R.string.currency, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.payments) {
+                Toast.makeText(this, "You clicked " + R.string.payments, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.reminder) {
+                Toast.makeText(this, "You clicked " + R.string.remind, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.share) {
+                Toast.makeText(this, "You clicked " + R.string.share, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.rate) {
+                Toast.makeText(this, "You clicked " + R.string.rate, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.settings) {
+                Toast.makeText(this, "You clicked " + R.string.settings, Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.support) {
+                Toast.makeText(this, "You clicked " + R.string.support, Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        });
+    }
+
+    private void initNavigationView() {
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                drawerLayout.closeDrawers();
+                if (item.getItemId() == R.id.bills) {
+                    replaceFragment(new BillsFragment());
+                } else if (item.getItemId() == R.id.currency) {
+                    replaceFragment(new CurrencyFragment());
+                } else if (item.getItemId() == R.id.payments) {
+                    replaceFragment(new PaymentsFragment());
+                } else if (item.getItemId() == R.id.reminder) {
+                    replaceFragment(new ReminderFragment());
+                } else if (item.getItemId() == R.id.share) {
+                    replaceFragment(new ShareFragment());
+                } else if (item.getItemId() == R.id.rate) {
+                    replaceFragment(new RateFragment());
+                } else if (item.getItemId() == R.id.settings) {
+                    replaceFragment(new SettingsFragment());
+                } else if (item.getItemId() == R.id.support) {
+                    replaceFragment(new SupportFragment());
+                }
+                return true;
             }
         });
 
@@ -153,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
@@ -165,46 +259,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.bills) {
-            replaceFragment(new BillsFragment());
-        } else if (item.getItemId() == R.id.currency) {
-            replaceFragment(new CurrencyFragment());
-        } else if (item.getItemId() == R.id.payments) {
-            replaceFragment(new PaymentsFragment());
-        } else if (item.getItemId() == R.id.reminder) {
-            replaceFragment(new ReminderFragment());
-        } else if (item.getItemId() == R.id.share) {
-            replaceFragment(new ShareFragment());
-        } else if (item.getItemId() == R.id.rate) {
-            replaceFragment(new RateFragment());
-        } else if (item.getItemId() == R.id.settings) {
-            replaceFragment(new SettingsFragment());
-        } else if (item.getItemId() == R.id.support) {
-            replaceFragment(new SupportFragment());
-        } else if (item.getItemId() == R.id.bills) {
-            Toast.makeText(this, "You clicked " + R.string.bills, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.currency) {
-            Toast.makeText(this, "You clicked " + R.string.currency, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.payments) {
-            Toast.makeText(this, "You clicked " + R.string.payments, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.reminder) {
-            Toast.makeText(this, "You clicked " + R.string.reminder, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.share) {
-            Toast.makeText(this, "You clicked " + R.string.share, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.rate) {
-            Toast.makeText(this, "You clicked " + R.string.rate, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.settings) {
-            Toast.makeText(this, "You clicked " + R.string.settings, Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId() == R.id.support) {
-            Toast.makeText(this, "You clicked " + R.string.support, Toast.LENGTH_SHORT).show();
-        }
-
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     @Override

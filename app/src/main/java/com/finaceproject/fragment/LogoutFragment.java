@@ -1,4 +1,4 @@
-package com.finaceproject;
+package com.finaceproject.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.finaceproject.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ReminderFragment#newInstance} factory method to
+ * Use the {@link LogoutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ReminderFragment extends Fragment {
+public class LogoutFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +25,7 @@ public class ReminderFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ReminderFragment() {
+    public LogoutFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +35,11 @@ public class ReminderFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ShoppingFragment.
+     * @return A new instance of fragment LogoutFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ReminderFragment newInstance(String param1, String param2) {
-        ReminderFragment fragment = new ReminderFragment();
+    public static LogoutFragment newInstance(String param1, String param2) {
+        LogoutFragment fragment = new LogoutFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,6 +60,6 @@ public class ReminderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reminder, container, false);
+        return inflater.inflate(R.layout.fragment_logout, container, false);
     }
 }

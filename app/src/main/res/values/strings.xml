@@ -1,27 +1,24 @@
 <resources>
     <string name="app_name">Finance project</string>
-    <string name="payments">Платежі</string>
-    <string name="currency">Валюта</string>
-    <string name="bills">Рахунки</string>
-    <string name="reminder">Нагадування</string>
-    <string name="share">Поділитись</string>
-    <string name="rate">Оцінити додаток</string>
-    <string name="settings">Налаштування</string>
-    <string name="support">Підтримка</string>
-    <string name="login">Вхід</string>
-    <string name="logout">Вихід</string>
+    <string name="payments">Payments</string>
+    <string name="currency">Currency</string>
+    <string name="bills">Bills</string>
+    <string name="remind">Remind</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate app</string>
+    <string name="settings">Settings</string>
+    <string name="support">Support</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="home">Записи</string>
-    <string name="statistic">Статистика</string>
-    <string name="finance_up">Finance Up</string>
-    <string name="finance_down">Finance Down</string>
-    <string name="fin_up">Дохід</string>
-    <string name="fin_down">Витрати</string>
-    <string name="stat">Статистика</string>
-    <string name="diagrams">Діаграми</string>
-    <string name="reports">Звіти</string>
-    <string name="profile">Профіль</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="home">Records</string>
+    <string name="statistic">Statistic</string>
+    <string name="fin_up">Income</string>
+    <string name="fin_down">Costs</string>
+    <string name="diagrams">Diagrams</string>
+    <string name="reports">Reports</string>
+    <string name="profile">Profile</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
