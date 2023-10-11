@@ -48,6 +48,8 @@ public class ReportsFragment extends AbstractTabFragment {
         data.add(new CardDto("Здоров'я", "4000", "грн"));
         data.add(new CardDto("Подорожі", "10000", "грн"));
         data.add(new CardDto("Діти", "5000", "грн"));
+        data.add(new CardDto("Діти", "5000", "грн"));
+        data.add(new CardDto("Діти", "5000", "грн"));
         data.add(new CardDto("Інше", "12000", "грн"));
         return data;
     }

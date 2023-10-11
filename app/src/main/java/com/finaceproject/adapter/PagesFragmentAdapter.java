@@ -10,14 +10,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.finaceproject.fragment.AbstractTabFragment;
-import com.finaceproject.fragment.BillsFragment;
-import com.finaceproject.fragment.CurrencyFragment;
-import com.finaceproject.fragment.PaymentsFragment;
-import com.finaceproject.fragment.RateFragment;
-import com.finaceproject.fragment.ReminderFragment;
-import com.finaceproject.fragment.SettingsFragment;
-import com.finaceproject.fragment.ShareFragment;
-import com.finaceproject.fragment.SupportFragment;
+import com.finaceproject.fragment.AddButtonFragment;
+import com.finaceproject.fragment.AddIncomesFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,13 +44,7 @@ public class PagesFragmentAdapter extends FragmentPagerAdapter {
 
     private void initTabMap(Context context) {
         tabs = new HashMap<>();
-        tabs.put(0, BillsFragment.newInstance(context));
-        tabs.put(1, CurrencyFragment.newInstance(context));
-        tabs.put(2, PaymentsFragment.newInstance(context));
-        tabs.put(3, ReminderFragment.newInstance(context));
-        tabs.put(4, ShareFragment.newInstance(context));
-        tabs.put(5, RateFragment.newInstance(context));
-        tabs.put(6, SettingsFragment.newInstance(context));
-        tabs.put(7, SupportFragment.newInstance(context));
+        tabs.put(0, AddButtonFragment.newInstance(context));
+        tabs.put(1, AddIncomesFragment.newInstance(context));
     }
 }

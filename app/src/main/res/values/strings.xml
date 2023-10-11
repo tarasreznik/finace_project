@@ -14,11 +14,25 @@
     <string name="close">Close</string>
     <string name="home">Records</string>
     <string name="statistic">Statistic</string>
-    <string name="fin_up">Income</string>
-    <string name="fin_down">Costs</string>
+    <string name="incomes">Incomes</string>
+    <string name="costs">Costs</string>
     <string name="diagrams">Diagrams</string>
     <string name="reports">Reports</string>
     <string name="profile">Profile</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="date">Date</string>
+    <string name="calendar">Calendar</string>
+    <string name="date_format">DD/MM/YYYY</string>
+    <string name="amount">Amount</string>
+    <string name="amount_fraze">Enter amount</string>
+    <string name="transport_ctg">Transport</string>
+    <string name="food_ctg">Food</string>
+    <string name="healthy_ctg">Healthy</string>
+    <string name="more_ctg">More</string>
+    <string name="comment">Comment</string>
+    <string name="comment_fraze">Add comment</string>
+
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

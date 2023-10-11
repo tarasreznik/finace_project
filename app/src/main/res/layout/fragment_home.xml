@@ -1,17 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/home"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@android:color/holo_orange_dark"/>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraint_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/vertical_wall"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="16dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/header_records"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="56dp"-->
+<!--                android:isScrollContainer="false"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                    android:id="@+id/fab_menu"-->
+<!--                    android:layout_width="56dp"-->
+<!--                    android:layout_height="56dp"-->
+<!--                    app:backgroundTint="@color/gray_cards"-->
+<!--                    tools:src="@drawable/mdi_light_menu" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:fontFamily="@font/montserrat_semibold"-->
+<!--                    android:gravity="top|center"-->
+<!--                    android:text="@string/home"-->
+<!--                    android:textColor="@color/toxic"-->
+<!--                    android:textSize="30sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/row_1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:isScrollContainer="true"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/header_report">-->
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/recyclerView_records"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingBottom="60dp"-->
+<!--                    tools:layoutManager="GridLayoutManager"-->
+<!--                    tools:spanCount="2" />-->
+
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </FrameLayout>

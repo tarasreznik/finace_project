@@ -9,8 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +21,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
+import com.finaceproject.fragment.AbstractTabFragment;
+import com.finaceproject.fragment.AddButtonFragment;
+import com.finaceproject.fragment.AddCostsFragment;
+import com.finaceproject.fragment.AddIncomesFragment;
 import com.finaceproject.fragment.BillsFragment;
 import com.finaceproject.fragment.CurrencyFragment;
 import com.finaceproject.fragment.DiagramFragment;
 import com.finaceproject.fragment.HomeFragment;
+import com.finaceproject.fragment.LogoutFragment;
 import com.finaceproject.fragment.PaymentsFragment;
 import com.finaceproject.fragment.ProfileFragment;
 import com.finaceproject.fragment.RateFragment;
@@ -47,11 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int LAYOUT = R.layout.activity_main;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private ViewPager viewPager;
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
     private FragmentManager fragmentManager;
-
+    private AbstractTabFragment addIncomesFragment, addCostsFragment, homeFragment, addButtonFragment;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -61,29 +63,20 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showPage() {
-        viewPager.setCurrentItem(0);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppThemeDefault);
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
+        addButtonFragment = new AddButtonFragment();
+        addCostsFragment = new AddCostsFragment();
+        addIncomesFragment = new AddIncomesFragment();
+        homeFragment = new HomeFragment();
 
         initToolBar();
         initNavigationView();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-
         setSupportActionBar(toolbar);
-
-
-
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
@@ -91,16 +84,20 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.home) {
-                replaceFragment(new HomeFragment());
+                replaceFragment(homeFragment);
+                toolbar.setTitle(R.string.home);
                 return true;
             } else if (item.getItemId() == R.id.diagram) {
                 replaceFragment(new DiagramFragment());
+                toolbar.setTitle(R.string.diagrams);
                 return true;
             } else if (item.getItemId() == R.id.reports) {
                 replaceFragment(new ReportsFragment());
+                toolbar.setTitle(R.string.reports);
                 return true;
             } else if (item.getItemId() == R.id.profile) {
                 replaceFragment(new ProfileFragment());
+                toolbar.setTitle(R.string.profile);
                 return true;
             }
             return false;
@@ -109,60 +106,25 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
             navigationView.setCheckedItem(R.id.home);
         }
-        replaceFragment(new HomeFragment());
+        replaceFragment(homeFragment);
 
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBottomDialog();
-                Toast.makeText(MainActivity.this, "is clicked", Toast.LENGTH_SHORT).show();
+//                showBottomDialog();
+                replaceFragment(addButtonFragment);
+                toolbar.setTitle(R.string.add);
             }
         });
-
     }
 
     private void initToolBar() {
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
-        toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.bills) {
-                replaceFragment(new BillsFragment());
-            } else if (item.getItemId() == R.id.currency) {
-                replaceFragment(new CurrencyFragment());
-            } else if (item.getItemId() == R.id.payments) {
-                replaceFragment(new PaymentsFragment());
-            } else if (item.getItemId() == R.id.reminder) {
-                replaceFragment(new ReminderFragment());
-            } else if (item.getItemId() == R.id.share) {
-                replaceFragment(new ShareFragment());
-            } else if (item.getItemId() == R.id.rate) {
-                replaceFragment(new RateFragment());
-            } else if (item.getItemId() == R.id.settings) {
-                replaceFragment(new SettingsFragment());
-            } else if (item.getItemId() == R.id.support) {
-                replaceFragment(new SupportFragment());
-            } else if (item.getItemId() == R.id.bills) {
-                Toast.makeText(this, "You clicked " + R.string.bills, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.currency) {
-                Toast.makeText(this, "You clicked " + R.string.currency, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.payments) {
-                Toast.makeText(this, "You clicked " + R.string.payments, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.reminder) {
-                Toast.makeText(this, "You clicked " + R.string.remind, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.share) {
-                Toast.makeText(this, "You clicked " + R.string.share, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.rate) {
-                Toast.makeText(this, "You clicked " + R.string.rate, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.settings) {
-                Toast.makeText(this, "You clicked " + R.string.settings, Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.support) {
-                Toast.makeText(this, "You clicked " + R.string.support, Toast.LENGTH_SHORT).show();
-            }
-            return true;
-        });
+        toolbar.setTitle(R.string.home);
     }
 
     private void initNavigationView() {
@@ -177,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 if (item.getItemId() == R.id.bills) {
                     replaceFragment(new BillsFragment());
+                    toolbar.setTitle(R.string.bills);
+                    Toast.makeText(MainActivity.this, "You clicked Bills", Toast.LENGTH_SHORT).show();
                 } else if (item.getItemId() == R.id.currency) {
                     replaceFragment(new CurrencyFragment());
                 } else if (item.getItemId() == R.id.payments) {
@@ -191,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new SettingsFragment());
                 } else if (item.getItemId() == R.id.support) {
                     replaceFragment(new SupportFragment());
+                } else if (item.getItemId() == R.id.logout) {
+                    replaceFragment(new LogoutFragment());
                 }
                 return true;
             }
@@ -202,53 +168,38 @@ public class MainActivity extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottomsheetlayout);
+        dialog.setContentView(R.layout.fragment_add_button);
 
-        LinearLayout videoLayout = dialog.findViewById(R.id.layoutVideo);
-        LinearLayout shortsLayout = dialog.findViewById(R.id.layoutShorts);
-        LinearLayout liveLayout = dialog.findViewById(R.id.layoutLive);
-        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+        Button btnAddCosts = dialog.findViewById(R.id.costs_btn);
+        Button btnAddIncomes = dialog.findViewById(R.id.income_btn);
+//        FloatingActionButton cancelButton = dialog.findViewById(R.id.back_button_add);
 
-        videoLayout.setOnClickListener(new View.OnClickListener() {
+        initFragmentTransaction(addCostsFragment);
+
+        btnAddCosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                dialog.dismiss();
-                Toast.makeText(MainActivity.this, "Upload a Video is clicked", Toast.LENGTH_SHORT).show();
-
+                initFragmentTransaction(addCostsFragment);
+//                replaceFragment(new AddCostsFragment());
             }
         });
-
-        shortsLayout.setOnClickListener(new View.OnClickListener() {
+        btnAddIncomes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                dialog.dismiss();
-                Toast.makeText(MainActivity.this, "Create a short is Clicked", Toast.LENGTH_SHORT).show();
-
+                initFragmentTransaction(addIncomesFragment);
+//                replaceFragment(new AddIncomesFragment());
             }
         });
-
-        liveLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dialog.dismiss();
-                Toast.makeText(MainActivity.this, "Go live is Clicked", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+//        cancelButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.dismiss();
+//            }
+//        });
 
         dialog.show();
-        Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
@@ -258,7 +209,15 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private void initFragmentTransaction(AbstractTabFragment fragment) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     @Override

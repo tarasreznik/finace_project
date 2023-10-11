@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    tools:background="@color/black">
+
+    <item
+        android:id="@+id/transport_category"
+        android:icon="@drawable/transport_category_bttn"
+        android:title="@string/transport_ctg" />
+
+    <item
+        android:id="@+id/food_category"
+        android:icon="@drawable/food_category_bttn"
+        android:title="@string/food_ctg" />
+
+    <item
+        android:id="@+id/healthy_category"
+        android:icon="@drawable/healthy_category_bttn"
+        android:title="@string/healthy_ctg" />
+
+    <item
+        android:id="@+id/more_category"
+        android:icon="@drawable/add_category_bttn"
+        android:title="@string/more_ctg" />
+</menu>

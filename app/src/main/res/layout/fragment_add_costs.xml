@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/AppThemeDefault">
+
+    <LinearLayout
+        android:id="@+id/date_add_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="16sp"
+            android:text="@string/date" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:background="@color/gray_cards">
+
+            <EditText
+                android:id="@+id/add_date_cost"
+                android:layout_width="308dp"
+                android:layout_height="match_parent"
+                android:paddingStart="16sp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center_vertical"
+                android:inputType="date"
+                android:text="12/02/2022"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/toxic"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/calendar_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                app:srcCompat="@drawable/button_calendar" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_format"
+            android:fontFamily="@font/roboto" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter"
+            android:textSize="20sp"
+            android:text="@string/amount" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_cards"
+            app:layout_constraintTop_toBottomOf="@id/date_add_block">
+
+            <EditText
+                android:id="@+id/add_value_cost"
+                android:layout_width="308dp"
+                android:layout_height="match_parent"
+                android:paddingStart="16sp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center_vertical"
+                android:inputType="number"
+                android:hint="@string/amount_fraze"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/toxic"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/currency_change_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                app:srcCompat="@drawable/change_currency_btn" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray_cards"
+            app:layout_constraintTop_toBottomOf="@id/date_add_block">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/categoryNavigationView"
+                android:layout_width="wrap_content"
+                android:layout_height="92dp"
+                android:background="@android:color/transparent"
+                android:theme="@style/AppThemeDefault"
+                app:itemIconSize="56sp"
+                app:itemIconTint="@color/toxic"
+                app:itemPaddingBottom="12sp"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/category_menu" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter"
+            android:textSize="20sp"
+            android:text="@string/comment" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_cards">
+
+            <EditText
+                android:id="@+id/add_comment_cost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="16sp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center_vertical"
+                android:inputType="number"
+                android:hint="@string/comment_fraze"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/toxic"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons_add"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:background="@color/gray_cards"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_add">
+
+            <Button
+                android:id="@+id/costs_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:text="@string/cancel"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/income_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/add"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -6,24 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.finaceproject.R;
-import com.finaceproject.adapter.CardListAdapter;
-import com.finaceproject.model.dto.CardDto;
 
-import java.util.ArrayList;
-import java.util.List;
+public class AddIncomesFragment extends AbstractTabFragment {
 
-public class HomeFragment extends AbstractTabFragment {
-    private static final int LAYOUT = R.layout.fragment_home;
+    private static final int LAYOUT = R.layout.fragment_add_incomes;
 
-    public static HomeFragment newInstance(Context context) {
-        HomeFragment fragment = new HomeFragment();
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public static AddIncomesFragment newInstance(Context context) {
+        AddIncomesFragment fragment = new AddIncomesFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
+        fragment.setContext(context);
+        fragment.setTitle(context.getString(R.string.incomes));
         return fragment;
     }
 
