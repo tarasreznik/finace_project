@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lime">#C7F000</color>
+    <color name="grey">#B9B9B9</color>
+    <color name="grey_cards">#252525</color>
+    <color name="white_text">#F9FAFE</color>
+    <color name="black_text">#060505</color>
 </resources>
